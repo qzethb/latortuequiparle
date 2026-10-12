@@ -194,6 +194,21 @@
   border: 1px solid var(--lilas);
 }
 .billet-texte figcaption { margin-top: 12px; text-indent: 0; }
+.billet-texte .description-schema {
+  max-width: 52em; margin: 12px auto 0;
+  text-align: left; font-size: .78em; line-height: 1.55;
+}
+.billet-texte .description-schema summary {
+  width: fit-content;
+  color: var(--violet);
+  cursor: pointer;
+}
+.billet-texte .description-schema summary:focus-visible {
+  outline: 1px solid var(--violet); outline-offset: 3px;
+}
+.billet-texte .description-schema p {
+  margin: .7em 0 0; text-indent: 0; text-align: left;
+}
 
 
 /* 6 bis. TABLEAUX
