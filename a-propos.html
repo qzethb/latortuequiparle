@@ -3,26 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>À propos — Carnet</title>
-<meta name="description" content="Découvrez la démarche de Carnet : un espace indépendant de réflexion sur la société et ses mécanismes, à travers plusieurs disciplines.">
+<title>À propos — La Tortue</title>
+<meta name="description" content="Découvrez la démarche de La Tortue : un espace indépendant de réflexion sur la société et ses mécanismes, à travers plusieurs disciplines.">
 <link rel="stylesheet" href="charte.css">
-<link rel="icon" type="image/png" href="my-favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="my-favicon/favicon.svg" />
-<link rel="shortcut icon" href="my-favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="my-favicon/apple-touch-icon.png" />
-<link rel="manifest" href="my-favicon/site.webmanifest" />
+<script src="menu.js" defer></script>
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<link rel="manifest" href="favicon/site.webmanifest" />
 </head>
 <body>
   <div class="page">
 
     <header>
       <a class="marque" href="index.html">
-        <img class="logo" src="logo.png" alt="">
+        <img class="logo" src="logo.svg" alt="">
       </a>
-      <nav>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation-principale">
+        <span class="menu-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav id="navigation-principale" class="navigation" aria-label="Navigation principale">
         <a href="index.html#articles">Articles</a>
         <a href="a-propos.html" aria-current="page">À propos</a>
         <a href="contacts.html">Contacts</a>
+        <a href="newsletter.html">Newsletter</a>
       </nav>
     </header>
 
@@ -33,8 +38,8 @@
 
     <main class="lecture">
       <div class="lecture-texte">
-        <p>Ce site est d'abord pensé comme un espace de réflexion collectif où tous les articles, y compris les billets d'opinion, sont tolérés dès lors qu'ils respectent la loi. Indépendants, nous cherchons surtout à interroger notre société, son fonctionnement et ses mécanismes à travers les prismes de la philosophie, de la sociologie, des sciences politiques, de la littérature et de l'économie.</p>
-        <p>Il est toutefois important de préciser que la majorité du travail reste amateur et n'a pas de valeur scientifique reconnue ni de légitimité. Pour voir les travaux récents de la recherche, nous vous conseillons de vous renseigner sur les sources placées en bas d'article ou de vous rendre sur des plateformes institutionnelles comme Cairn.</p>
+        <p>Ce site doit être approché comme un espace de réflexion. L’objectif est de traiter les thèmes d’actualité sous un angle statistique et quantitatif quand c’est possible, et y d’apporter l’éclairage de la sociologie, de l’économie, des sciences politiques, de la littérature ou de la philosophie. </p>
+        <p>Il n’a pas de vocation journalistique ou scientifique : à ce titre, ce qui est écrit ici ne peut être pris comme une vérité générale et doit être considéré avec recul. Pour voir les travaux récents de la recherche, nous vous conseillons de vous renseigner sur les sources placées en bas d'article ou de vous rendre sur des plateformes institutionnelles comme Cairn.</p>
       </div>
 
     </main>
@@ -68,7 +73,7 @@
           <p class="pied-note">Cette fonctionnalité est en cours de développement.</p>
         </div>
       </div>
-      <p class="pied-copy">© 2026 Carnet</p>
+      <p class="pied-copy">© 2026 La Tortue</p>
     </footer>  
     </div>
 </body>

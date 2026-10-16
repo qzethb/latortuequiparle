@@ -3,32 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Contact — Carnet</title>
-<meta name="description" content="Retrouvez les informations de contact de Carnet et l’état du service de newsletter.">
+<title>Contact — La Tortue</title>
+<meta name="description" content="Retrouvez les informations de contact de La Tortue et l’état du service de newsletter.">
 <link rel="stylesheet" href="charte.css">
-<link rel="icon" type="image/png" href="my-favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="my-favicon/favicon.svg" />
-<link rel="shortcut icon" href="my-favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="my-favicon/apple-touch-icon.png" />
-<link rel="manifest" href="my-favicon/site.webmanifest" />
+<script src="menu.js" defer></script>
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<link rel="manifest" href="favicon/site.webmanifest" />
 </head>
 <body>
   <div class="page">
 
     <header>
       <a class="marque" href="index.html">
-        <img class="logo" src="logo.png" alt="Carnet">
+        <img class="logo" src="logo.svg" alt="La Tortue">
       </a>
-      <nav>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation-principale">
+        <span class="menu-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav id="navigation-principale" class="navigation" aria-label="Navigation principale">
         <a href="articles.html">Articles</a>
         <a href="a-propos.html">À propos</a>
         <a href="contacts.html">Contacts</a>
+        <a href="newsletter.html">Newsletter</a>
       </nav>
     </header>
     <section id="contact" class="lecture" aria-labelledby="contact-titre">
 
      <section class="billet-entete">
-      <h1>Contacts</h1>
+      <h1 id="contact-titre">Contact</h1>
       <div class="ornement"></div>
     </section>
 
@@ -42,8 +47,8 @@
     <ul class="contacts">
         <li>
         <span>Courriel</span>
-        <a href="mailto:ton-adresse@exemple.fr">
-            ton-adresse@exemple.fr
+        <a href="mailto:latortuequipense@yahoo.com">
+          latortuequipense@yahoo.com
         </a>
         </li>
     </ul>
@@ -55,7 +60,7 @@
         <ul class="contacts">
         <li>
         <span>Newsletter</span>
-        <a href="mailto:ton-adresse@exemple.fr">
+        <a href="mailto:latortuequipense@yahoo.com">
             Cette fonctionnalité est en cours de développement.
         </a>
         </li>
@@ -91,7 +96,7 @@
           <p class="pied-note">Cette fonctionnalité est en cours de développement.</p>
         </div>
       </div>
-      <p class="pied-copy">© 2026 Carnet</p>
+      <p class="pied-copy">© 2026 La Tortue</p>
     </footer>
   </div> 
 </body>

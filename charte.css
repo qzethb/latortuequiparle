@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CARNET — Charte graphique
+  LA TORTUE — Charte graphique
    Élégant, sobre, fond blanc, palette autour du violet.
    Police : Baskerville Old Face (repli : Baskerville, Libre Baskerville).
 
@@ -62,7 +62,7 @@
   --largeur:         880px;
   --largeur-lecture: 680px;
   --marge:           28px;
-  --logo-hauteur:    60px;
+  --logo-hauteur:    76px;
 
   /* Mouvement */
   --transition: .3s ease;
@@ -166,7 +166,7 @@ blockquote {
 /* 5. EN-TÊTE ET NAVIGATION
    -------------------------------------------------------------------------- */
 header {
-  display: flex; justify-content: space-between; align-items: baseline;
+  display: flex; justify-content: space-between; align-items: center;
   padding: 36px 0 0;
 }
 
@@ -180,6 +180,7 @@ header {
 .marque .logo { display: block; height: var(--logo-hauteur); width: auto; }
 
 nav { display: flex; gap: 28px; font-size: var(--t-petit); font-style: italic; }
+nav.navigation[hidden] { display: none; }
 nav a {
   color: var(--texte-doux);
   background: linear-gradient(var(--violet), var(--violet)) 0 100% / 0 1px no-repeat;
@@ -193,8 +194,8 @@ nav a[aria-current="page"] { color: var(--violet); background-size: 100% 1px; }
 /* 6. INTRODUCTION (page d'accueil)
    -------------------------------------------------------------------------- */
 .intro { padding: 17vh 0 14vh; text-align: center; }
-.intro h1 { color: var(--violet-profond); }
-.intro p  { margin: 0; font-size: var(--t-lead); font-style: italic; color: var(--violet); }
+.intro h1 { color: #000; }
+.intro p  { margin: 0; font-size: var(--t-lead); font-style: normal; color: var(--texte); }
 
 .ornement {
   width: 56px; height: 1px; margin: 34px auto 26px;
@@ -218,11 +219,22 @@ nav a[aria-current="page"] { color: var(--violet); background-size: 100% 1px; }
 .article .date   { font-size: var(--t-petit); font-style: italic; color: var(--texte-doux); }
 .article h2      { transition: color var(--transition); }
 .article .fleche { font-size: 22px; color: var(--lilas); transition: color var(--transition), transform var(--transition); }
+.article-corps h2 a { color: inherit; }
+.article-row { position: relative; }
+.article-toggle {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 2;
+  transform: translateY(-50%);
+}
 
-.article:hover { background: var(--brume); padding-left: 14px; padding-right: 14px; }
-.article:hover h2 { color: var(--violet); }
-.article:hover .fleche { color: var(--violet); transform: translateX(4px); }
-
+@media (hover: hover) and (min-width: 641px) {
+  .article:hover { background: var(--brume); padding-left: 14px; padding-right: 14px; }
+  .article:hover h2 { color: var(--violet); }
+  .article:hover .fleche { color: var(--violet); transform: translateX(4px); }
+}
 
 /* Conteneur du titre et de sa description */
 .article-corps {
@@ -249,11 +261,13 @@ nav a[aria-current="page"] { color: var(--violet); background-size: 100% 1px; }
     margin-top .35s ease;
 }
 
-/* Apparition au survol de l'article */
-.article:hover .article-description,
-.article:focus-visible .article-description {
-  max-height: 8em;
-  margin-top: 10px;
+/* Apparition au survol ou au focus sur les appareils avec pointeur */
+@media (hover: hover) and (min-width: 641px) {
+  .article:hover .article-description,
+  .article:focus-within .article-description {
+    max-height: 8em;
+    margin-top: 10px;
+  }
 }
 
 /* Respect des préférences de réduction des animations */
@@ -271,7 +285,11 @@ nav a[aria-current="page"] { color: var(--violet); background-size: 100% 1px; }
 /* 8. PAGE D'ARTICLE (lecture)
    -------------------------------------------------------------------------- */
 .billet-entete { padding: 12vh 0 8vh; text-align: center; }
-.billet-entete h1 { font-size: var(--t-billet); line-height: 1.15; }
+.billet-entete h1 {
+  font-size: var(--t-billet);
+  line-height: 1.15;
+  color: #000;
+}
 .billet-meta {
   margin: 22px 0 0;
   font-size: var(--t-petit); font-style: italic; color: var(--texte-doux);
@@ -377,6 +395,8 @@ footer {
 
 /* 12. ADAPTATION MOBILE
    -------------------------------------------------------------------------- */
+.menu-toggle { display: none; }
+
 @media (max-width: 640px) {
   :root { --t-base: 17px; --marge: 22px; }
 
@@ -385,11 +405,71 @@ footer {
 
   .intro { padding: 13vh 0 10vh; }
 
-  .article { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 24px 0; }
+  .article { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 24px 56px 24px 0; }
   .article .date { grid-column: 1 / -1; }
   .article h2 { font-size: var(--t-h3); }
+  .article-toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .article-toggle .fleche { font-size: 22px; }
+  .article > .fleche { display: none; }
+  .article-toggle[aria-expanded="true"] .fleche { transform: rotate(180deg); }
+  .article.is-expanded .article-description { max-height: 30em; margin-top: 10px; }
 
   .billet-texte { font-size: 18px; }
+}
+
+@media (max-width: 760px) {
+  header { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding-top: 28px; }
+
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--lilas);
+    background: transparent;
+    color: var(--violet);
+    cursor: pointer;
+  }
+
+  .menu-toggle-icon {
+    display: flex;
+    width: 20px;
+    height: 16px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .menu-toggle-icon span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-icon span:first-child { transform: translateY(7.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] .menu-toggle-icon span:nth-child(2) { opacity: 0; }
+  .menu-toggle[aria-expanded="true"] .menu-toggle-icon span:last-child { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .navigation:not([hidden]) {
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 0 4px;
+    border-top: 1px solid var(--lilas);
+  }
+
+  .navigation a { padding: 10px 0; }
 }
 
 
@@ -402,7 +482,7 @@ footer {
 }
 
 /* ==========================================================================
-   CARNET — Pied de page
+  LA TORTUE — Pied de page
    Trois colonnes : plan du site, informations, newsletter.
    À charger APRÈS charte.css (elle réutilise ses variables).
  
@@ -478,6 +558,55 @@ nav.pied-col { display: block; gap: 0; font-size: inherit; font-style: normal; }
   transition: background var(--transition), color var(--transition);
 }
 .newsletter button:hover { background: var(--violet); color: var(--blanc); }
+
+.inscription-newsletter {
+  display: grid;
+  gap: 14px;
+  margin: 2em 0;
+  text-align: left;
+}
+.inscription-newsletter > input[type="email"] {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--lilas);
+  border-radius: 0;
+  background: transparent;
+  color: var(--texte);
+  font: inherit;
+}
+.inscription-newsletter > input[type="email"]:focus {
+  outline: none;
+  border-bottom-color: var(--violet);
+  box-shadow: 0 1px 0 var(--violet);
+}
+.inscription-consentement {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: var(--t-petit);
+  line-height: 1.5;
+}
+.inscription-consentement input {
+  flex: 0 0 auto;
+  margin: .4em 0 0;
+  accent-color: var(--violet);
+}
+.inscription-newsletter button {
+  justify-self: start;
+  padding: 8px 22px;
+  border: 1px solid var(--violet);
+  background: transparent;
+  color: var(--violet);
+  font: inherit;
+  font-style: italic;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.inscription-newsletter button:hover {
+  background: var(--violet);
+  color: var(--blanc);
+}
  
 .pied-note { margin: 14px 0 0; font-size: 13px; font-style: italic; line-height: 1.5; }
  
@@ -505,7 +634,7 @@ nav.pied-col { display: block; gap: 0; font-size: inherit; font-style: normal; }
 
 
 /* ==========================================================================
-   CARNET — Recherche et tags
+  LA TORTUE — Recherche et tags
    Page « Tous les articles » : barre de recherche, menu déroulant de tags,
    résultats.
    À charger APRÈS charte.css (elle réutilise ses variables).
@@ -553,6 +682,18 @@ nav.pied-col { display: block; gap: 0; font-size: inherit; font-style: normal; }
 .filtres-menus { position: relative; z-index: 5; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .menu-tags { position: relative; display: inline-block; }
 .menu-tags [hidden] { display: none; }
+
+.actualiser-filtres {
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px; padding: 0;
+  border: 1px solid var(--lilas); background: transparent; color: var(--violet);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), opacity var(--transition);
+}
+.actualiser-filtres:hover:not(:disabled) { background: var(--brume); border-color: var(--violet-doux); }
+.actualiser-filtres:disabled { opacity: .45; cursor: default; }
+.actualiser-filtres:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+.actualiser-filtres svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
 .menu-tags-bouton {
   display: inline-flex; align-items: center; gap: 10px;
@@ -638,6 +779,8 @@ nav.pied-col { display: block; gap: 0; font-size: inherit; font-style: normal; }
 /* Le panneau se déroule à l'ouverture (seulement si le mouvement est permis) */
 @media (prefers-reduced-motion: no-preference) {
   .menu-tags-panneau { animation: deroule .2s ease both; }
+  .actualiser-filtres svg { transition: transform .3s ease; }
+  .actualiser-filtres:hover:not(:disabled) svg { transform: rotate(90deg); }
   @keyframes deroule {
     from { opacity: 0; transform: translateY(-6px); }
     to   { opacity: 1; transform: none; }
@@ -656,6 +799,7 @@ nav.pied-col { display: block; gap: 0; font-size: inherit; font-style: normal; }
 /* Les articles sont masqués par l'attribut hidden : on rétablit son effet,
    car .article utilise display: grid */
 .article[hidden] { display: none; }
+.article-row:has(> .article[hidden]) { display: none; }
 
 /* Titre dans la colonne centrale d'un article de la liste.
    Les tags restent dans le code (data-tags et .article-tags) mais ne

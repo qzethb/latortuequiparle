@@ -3,26 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Articles — Carnet</title>
-<meta name="description" content="Retrouvez les articles de Carnet sur la société, la politique, la littérature et les sciences humaines. Recherchez un sujet ou filtrez les publications.">
+<title>Articles — La Tortue</title>
+<meta name="description" content="Retrouvez les articles de La Tortue sur la société, la politique, la littérature et les sciences humaines. Recherchez un sujet ou filtrez les publications.">
 <link rel="stylesheet" href="charte.css">
-<link rel="icon" type="image/png" href="my-favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="my-favicon/favicon.svg" />
-<link rel="shortcut icon" href="my-favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="my-favicon/apple-touch-icon.png" />
-<link rel="manifest" href="my-favicon/site.webmanifest" />
+<script src="menu.js" defer></script>
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<link rel="manifest" href="favicon/site.webmanifest" />
 </head>
 <body>
   <div class="page">
 
     <header>
       <a class="marque" href="index.html">
-        <img class="logo" src="logo.png" alt="Carnet">
+        <img class="logo" src="logo.svg" alt="La Tortue">
       </a>
-      <nav>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation-principale">
+        <span class="menu-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav id="navigation-principale" class="navigation" aria-label="Navigation principale">
         <a href="articles.html" aria-current="page">Articles</a>
         <a href="a-propos.html">À propos</a>
         <a href="contacts.html">Contacts</a>
+        <a href="newsletter.html">Newsletter</a>
       </nav>
     </header>
 
@@ -68,10 +73,15 @@
               <label class="menu-tags-option"><input type="checkbox" value="Droit"><span>Droit</span></label>
               <label class="menu-tags-option"><input type="checkbox" value="Littérature"><span>Littérature</span></label>
               <label class="menu-tags-option"><input type="checkbox" value="Philosophie"><span>Philosophie</span></label>
-              <label class="menu-tags-option"><input type="checkbox" value="Statistiques"><span>Statistiques</span></label>
               <button type="button" class="menu-tags-reset" hidden>Tout décocher</button>
             </div>
           </div>
+
+          <button type="button" class="actualiser-filtres" id="actualiser-filtres" aria-label="Actualiser les résultats avec les filtres sélectionnés" title="Actualiser les résultats avec les filtres sélectionnés" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20 11a8.1 8.1 0 0 0-14.9-4M4 4v4h4M4 13a8.1 8.1 0 0 0 14.9 4M20 20v-4h-4" />
+            </svg>
+          </button>
 
         </div>
       </div>
@@ -79,39 +89,54 @@
       <p class="resultats" id="resultats" aria-live="polite"></p>
 
       <div class="liste">
-        <a class="article" href="articles/thelyson-orelien.html" data-tags="Littérature,Intelligence artificielle" data-disciplines="Littérature,Sociologie">
-          <span class="date">12 octobre 2026</span>
-          <div class="article-corps">
-            <h2>Thélyson Orélien, un scandale littéraire ? Une analyse statistique</h2>
-            <span class="article-description">
-              Dans cet article, nous verrons, à travers une analyse statistique mais aussi qualitative, comment le livre de Thélyson Orélien a pu se retrouver parmi les sélections du Goncourt et quelles questions cela soulève.
-            </span>
-            <div class="article-tags"><span class="tag">Littérature</span><span class="tag">Intelligence artificielle</span></div>
-          </div>
-          <span class="fleche">→</span>
-        </a>
-        <a class="article" href="articles/manifestations-lyceennes.html" data-tags="Politique,Société" data-disciplines="Sociologie,Science politique"> 
-          <span class="date">10 octobre 2026</span>
-          <div class="article-corps">
-            <h2>Manifestations lycéennes, violences et déni de démocratie</h2>
-            <span class="article-description">
-              Retour sur la mobilisation des lycéens, les affrontements observés et les interrogations autour du dialogue démocratique.
-            </span>
-            <div class="article-tags"><span class="tag">Politique</span><span class="tag">Société</span></div>
-          </div>
-          <span class="fleche">→</span>
-        </a>
-        <a class="article" href="articles/le-masque-du-merite.html" data-tags="Société" data-disciplines="Sociologie,Philosophie">
-          <span class="date">6 octobre 2026</span>
-          <div class="article-corps">
-            <h2>Aujourd'hui, quels sont les privilèges ?</h2>
-            <span class="article-description">
-              Une réflexion sur le concept de méritocratie et les inégalités invisibles qui persistent dans notre société actuelle.
-            </span>
-            <div class="article-tags"><span class="tag">Société</span></div>
-          </div>
-          <span class="fleche">→</span>
-        </a>
+        <article class="article-row">
+          <a class="article" href="articles/thelyson-orelien.html" data-tags="Littérature,Intelligence artificielle" data-disciplines="Littérature,Sociologie">
+            <span class="date">12 octobre 2026</span>
+            <div class="article-corps">
+              <h2>Thélyson Orélien, un scandale littéraire ? Une analyse statistique</h2>
+              <span class="article-description" id="description-thelyson-liste" aria-hidden="true">
+                Dans cet article, nous verrons comment le livre de Thélyson Orélien a pu faire partie de la première sélection du Goncourt.
+              </span>
+              <div class="article-tags"><span class="tag">Littérature</span><span class="tag">Intelligence artificielle</span></div>
+            </div>
+            <span class="fleche" aria-hidden="true">→</span>
+          </a>
+          <button class="article-toggle" type="button" aria-label="Afficher la description de l'article" aria-expanded="false" aria-controls="description-thelyson-liste">
+            <span class="fleche" aria-hidden="true">↓</span>
+          </button>
+        </article>
+        <article class="article-row">
+          <a class="article" href="articles/manifestations-lyceennes.html" data-tags="Politique,Société" data-disciplines="Sociologie,Science politique">
+            <span class="date">10 octobre 2026</span>
+            <div class="article-corps">
+              <h2>Revendications lycéennes et traitement médiatique : une lutte asymétrique</h2>
+              <span class="article-description" id="description-manifestations-liste" aria-hidden="true">
+                Retour sur le traitement médiatique du mouvement lycéen dans les journaux télévisés nationaux.
+              </span>
+              <div class="article-tags"><span class="tag">Politique</span><span class="tag">Société</span></div>
+            </div>
+            <span class="fleche" aria-hidden="true">→</span>
+          </a>
+          <button class="article-toggle" type="button" aria-label="Afficher la description de l'article" aria-expanded="false" aria-controls="description-manifestations-liste">
+            <span class="fleche" aria-hidden="true">↓</span>
+          </button>
+        </article>
+        <article class="article-row">
+          <a class="article" href="articles/le-masque-du-merite.html" data-tags="Société" data-disciplines="Sociologie,Philosophie">
+            <span class="date">6 octobre 2026</span>
+            <div class="article-corps">
+              <h2>Aujourd'hui, quels sont les privilèges ?</h2>
+              <span class="article-description" id="description-privileges-liste" aria-hidden="true">
+                Les inégalités n'ont jamais atteint un tel niveau en France, mais les mobilisations échouent les unes après les autres. Pourquoi ?
+              </span>
+              <div class="article-tags"><span class="tag">Société</span></div>
+            </div>
+            <span class="fleche" aria-hidden="true">→</span>
+          </a>
+          <button class="article-toggle" type="button" aria-label="Afficher la description de l'article" aria-expanded="false" aria-controls="description-privileges-liste">
+            <span class="fleche" aria-hidden="true">↓</span>
+          </button>
+        </article>
       </div>
 
       <div class="vide" id="vide" hidden>
@@ -149,7 +174,7 @@
           <p class="pied-note">Cette fonctionnalité est en cours de développement.</p>
         </div>
       </div>
-      <p class="pied-copy">© 2026 Carnet</p>
+      <p class="pied-copy">© 2026 La Tortue</p>
     </footer>
 
   </div>
@@ -158,6 +183,7 @@
 (function () {
   var champ    = document.getElementById('recherche');
   var effacer  = document.getElementById('effacer');
+  var actualiser = document.getElementById('actualiser-filtres');
   var compte   = document.getElementById('resultats');
   var vide     = document.getElementById('vide');
   var articles = document.querySelectorAll('.liste .article');
@@ -183,6 +209,7 @@
       cases:   el.querySelectorAll('input[type="checkbox"]')
     });
   });
+  var filtresAppliques = [];
 
   function coches(m) {
     var liste = [];
@@ -199,9 +226,34 @@
     m.cases.forEach(function (c) { c.checked = false; });
   }
 
+  function filtresModifies() {
+    return menus.some(function (m, i) {
+      var selection = coches(m);
+      var applique = filtresAppliques[i] || [];
+      return selection.length !== applique.length
+        || selection.some(function (valeur) { return applique.indexOf(valeur) === -1; });
+    });
+  }
+
+  function mettreAJourMenus() {
+    menus.forEach(function (m) {
+      var selection = coches(m);
+      m.nombre.textContent = selection.length;
+      m.nombre.hidden = !selection.length;
+      m.reset.hidden = !selection.length;
+    });
+    actualiser.disabled = !filtresModifies();
+  }
+
+  function appliquerFiltres() {
+    filtresAppliques = menus.map(coches);
+    mettreAJourMenus();
+    filtrer();
+  }
+
   function filtrer() {
     var mots  = normaliser(champ.value).split(/\s+/).filter(Boolean);
-    var choix = menus.map(coches);
+    var choix = filtresAppliques;
     var n = 0;
 
     articles.forEach(function (a) {
@@ -220,12 +272,6 @@
     compte.textContent = n ? n + (n > 1 ? ' articles' : ' article') : '';
     vide.hidden = n > 0;
     effacer.hidden = !champ.value;
-
-    menus.forEach(function (m, i) {
-      m.nombre.textContent = choix[i].length;
-      m.nombre.hidden = !choix[i].length;
-      m.reset.hidden  = !choix[i].length;
-    });
   }
 
   function ouvrir(m, oui) {
@@ -247,9 +293,11 @@
     m.el.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !m.panneau.hidden) { ouvrir(m, false); m.bouton.focus(); }
     });
-    m.cases.forEach(function (c) { c.addEventListener('change', filtrer); });
-    m.reset.addEventListener('click', function () { decocher(m); filtrer(); });
+    m.cases.forEach(function (c) { c.addEventListener('change', mettreAJourMenus); });
+    m.reset.addEventListener('click', function () { decocher(m); mettreAJourMenus(); });
   });
+
+  actualiser.addEventListener('click', appliquerFiltres);
 
   /* Clic ou focus à l'extérieur d'un menu : il se referme */
   function fermerExterieur(e) {
@@ -259,11 +307,11 @@
   document.addEventListener('focusin', fermerExterieur);
 
   champ.addEventListener('input', filtrer);
-  document.getElementById('formulaire').addEventListener('submit', function (e) { e.preventDefault(); });
+  document.getElementById('formulaire').addEventListener('submit', function (e) { e.preventDefault(); appliquerFiltres(); });
 
   effacer.addEventListener('click', function () { champ.value = ''; filtrer(); champ.focus(); });
   document.getElementById('tout').addEventListener('click', function () {
-    champ.value = ''; menus.forEach(decocher); filtrer();
+    champ.value = ''; menus.forEach(decocher); appliquerFiltres();
   });
 
   /* Liens directs : articles.html?tag=Société,Justice&discipline=Droit  ou  ?q=privilège */
@@ -275,6 +323,8 @@
       m.cases.forEach(function (c) { c.checked = demandes.indexOf(c.value) > -1; });
     }
   });
+  filtresAppliques = menus.map(coches);
+  mettreAJourMenus();
   filtrer();
 })();
 </script>
