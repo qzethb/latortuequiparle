@@ -170,19 +170,17 @@ L’article doit aussi figurer dans la page qui recense l’ensemble des publica
 ### Exemple de structure
 
 ```html
-<article class="article-item">
-  <a href="nom-de-l-article.html">
-    <span class="date">12 octobre 2026</span>
-    <h3>Titre de l’article</h3>
-    <p>Description courte.</p>
-    <ul class="tags">
-      <li>Éducation</li>
-      <li>Numérique</li>
-      <li>Technologie</li>
-    </ul>
-  </a>
-</article>
+<a class="article"
+    href="articles/nom-de-l-article.html"
+    data-tags="Éducation,Numérique"
+    data-disciplines="Sociologie"
+    data-motscles="nom du sujet, expression recherchée, variante, notion associée">
+   <!-- Conserver ici la structure existante : date, titre, description et tags visibles. -->
+   ...
+</a>
 ```
+
+L’attribut `data-motscles` doit être ajouté à l’élément `<a class="article">` de l’entrée correspondante. Les mots-clés séparés par des virgules sont utilisés par la recherche de `articles.html`.
 
 ---
 
@@ -240,11 +238,23 @@ Améliorer la recherche interne et la découvrabilité de l’article.
 
 ### À faire
 
-Ajouter une liste de mots-clés dans le HTML, par exemple dans un bloc dédié ou dans les métadonnées du document.
+Ajouter des mots-clés pertinents aux deux endroits suivants :
 
-### Exemple
+1. Dans `articles.html`, renseigner `data-motscles` sur l’élément `<a class="article">` de l’article. Séparer les termes par des virgules. La recherche interne examine le titre, la description, les tags et ces mots-clés ; elle ignore les accents et tous les mots saisis doivent correspondre.
+2. Dans la page HTML de l’article, ajouter une balise `meta` `keywords` dans le `<head>`. Elle décrit le sujet de la page dans ses métadonnées ; elle ne remplace pas `data-motscles` pour la recherche interne.
+
+### Exemples
 
 ```html
+<!-- Dans articles.html, sur le lien de l’article -->
+<a class="article" href="articles/nom-de-l-article.html"
+   data-tags="Éducation,Numérique"
+   data-disciplines="Sociologie"
+   data-motscles="éducation, apprentissage, outil numérique, nom du dispositif">
+```
+
+```html
+<!-- Dans le <head> de la page de l’article -->
 <meta name="keywords" content="éducation, numérique, IA, pédagogie, technologie, apprentissage, société, innovation">
 ```
 
@@ -289,6 +299,7 @@ Avant de publier, il faut vérifier :
 - [ ] le HTML de l’article est présent
 - [ ] le `<title>` est correct
 - [ ] la `<meta name="description">` est présente et pertinente
+- [ ] la `<meta name="keywords">` est présente et pertinente
 - [ ] la description de l’article est bien rédigée
 - [ ] le sous-titre est présent et lisible
 - [ ] le paragraphe de présentation est ajouté dans l’index
@@ -297,7 +308,7 @@ Avant de publier, il faut vérifier :
 - [ ] l’article est ajouté dans `articles.html`
 - [ ] les tags sont adaptés
 - [ ] les disciplines sont cohérentes
-- [ ] des mots-clés de recherche sont ajoutés
+- [ ] `data-motscles` est renseigné dans `articles.html`
 - [ ] les images sont bien chargées
 - [ ] les liens relatifs sont corrects
 - [ ] la page s’ouvre sans erreur dans le navigateur
@@ -314,7 +325,7 @@ Avant de publier, il faut vérifier :
 4. Ajouter la méta-description si absente.
 5. Ajouter le paragraphe de présentation dans `index.html` avec lien cliquable.
 6. Ajouter l’article dans le bloc “Derniers articles”.
-7. Ajouter l’article dans `articles.html` avec tags et mots-clés.
+7. Ajouter l’article dans `articles.html` avec tags, disciplines et `data-motscles`.
 8. Vérifier les images et les chemins.
 9. Tester le rendu dans le navigateur.
 10. Publier.

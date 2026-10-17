@@ -90,7 +90,7 @@
 
       <div class="liste">
         <article class="article-row">
-          <a class="article" href="articles/thelyson-orelien.html" data-tags="Littérature,Intelligence artificielle" data-disciplines="Littérature,Sociologie">
+          <a class="article" href="articles/thelyson-orelien.html" data-tags="Littérature,Intelligence artificielle" data-disciplines="Littérature,Sociologie" data-motscles="Thélyson Orélien, C’était ça ou mourir, intelligence artificielle, IA, écriture générée, détection IA, Pangram, Lucide, plagiat, Goncourt, prix Goncourt, prix littéraires, sélection littéraire, jurys littéraires, éditeurs, analyse statistique">
             <span class="date">12 octobre 2026</span>
             <div class="article-corps">
               <h2>Thélyson Orélien, un scandale littéraire ? Une analyse statistique</h2>
@@ -106,7 +106,7 @@
           </button>
         </article>
         <article class="article-row">
-          <a class="article" href="articles/manifestations-lyceennes.html" data-tags="Politique,Société" data-disciplines="Sociologie,Science politique">
+          <a class="article" href="articles/manifestations-lyceennes.html" data-tags="Politique,Société" data-disciplines="Sociologie,Science politique" data-motscles="manifestations lycéennes, lycéens, mouvement lycéen, jeunesse, revendications, blocus des lycées, éducation nationale, Parcoursup, médias, traitement médiatique, journal télévisé, temps d’antenne, violences policières, violences urbaines, répression, interpellations, maintien de l’ordre">
             <span class="date">10 octobre 2026</span>
             <div class="article-corps">
               <h2>Revendications lycéennes et traitement médiatique : une lutte asymétrique</h2>
@@ -122,7 +122,7 @@
           </button>
         </article>
         <article class="article-row">
-          <a class="article" href="articles/le-masque-du-merite.html" data-tags="Société" data-disciplines="Sociologie,Philosophie">
+          <a class="article" href="articles/le-masque-du-merite.html" data-tags="Société" data-disciplines="Sociologie,Philosophie" data-motscles="privilège, privilèges, méritocratie, mérite, inégalité, inégalités sociales, domination sociale, hiérarchie sociale, capital culturel, justice sociale, privilège blanc, privilège masculin, Bourdieu, philosophie, sociologie, Ancien Régime, Révolution française, luttes sociales">
             <span class="date">6 octobre 2026</span>
             <div class="article-corps">
               <h2>Aujourd'hui, quels sont les privilèges ?</h2>
@@ -193,7 +193,9 @@
     return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
-  articles.forEach(function (a) { a.dataset.texte = normaliser(a.textContent); });
+  articles.forEach(function (a) {
+    a.dataset.texte = normaliser(a.textContent + ' ' + (a.dataset.motscles || ''));
+  });
 
   /* Menus déroulants (Tags, Discipline…) : un objet par menu */
   var menus = [];
