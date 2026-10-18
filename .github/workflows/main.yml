@@ -1,0 +1,23 @@
+name: IndexNow Submission
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/IndexNow" \
+               -H "Content-Type: application/json; charset=utf-8" \
+               -d '{
+                     "host": "latortuequiparle.fr",
+                     "key": "7f0ba42245a045668ce86277ba63e306",
+                     "keyLocation": "https://latortuequiparle.fr/7f0ba42245a045668ce86277ba63e306.txt",
+                     "urlList": [
+                       "https://latortuequiparle.fr/"
+                     ]
+                   }'
