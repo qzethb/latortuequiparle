@@ -6,6 +6,8 @@
   <title>Page introuvable — La Tortue</title>
   <meta name="description" content="La page demandée est introuvable. Elle a peut-être été déplacée ou supprimée.">
   <link rel="stylesheet" href="/charte.css">
+  <link rel="stylesheet" href="/report.css">
+  <script src="/menu.js" defer></script>
   <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
   <link rel="shortcut icon" href="/favicon/favicon.ico">
@@ -13,15 +15,68 @@
   <link rel="manifest" href="/favicon/site.webmanifest">
 </head>
 <body>
-  <main class="page page--lecture">
-    <div class="billet-entete">
-      <h1>Page introuvable</h1>
-    </div>
+  <div class="page page--lecture page-404">
+    <header>
+      <a class="marque" href="/index.html">
+        <img class="logo" src="/logo.svg" alt="La Tortue">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation-principale">
+        <span class="menu-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav id="navigation-principale" class="navigation" aria-label="Navigation principale">
+        <a href="/articles.html">Articles</a>
+        <a href="/a-propos.html">À propos</a>
+        <a href="/contacts.html">Contacts</a>
+        <a href="/newsletter.html">Newsletter</a>
+      </nav>
+    </header>
 
-    <div class="billet-texte">
-      <p>La page que vous recherchez est introuvable. Elle a peut-être été déplacée ou supprimée. Pour toute demande d’information, vous pouvez écrire à <a class="lien" href="mailto:latortuequipense@yahoo.com">latortuequipense@yahoo.com</a>.</p>
-      <p><a class="lien" href="/index.html">Retourner à la page d’accueil</a></p>
-    </div>
+    <main>
+      <div class="billet-entete">
+        <h1>Page introuvable</h1>
+        <div class="ornement"></div>
+      </div>
+
+      <div class="billet-texte">
+        <p>La page demandée est introuvable. Elle a peut-être été déplacée ou supprimée. Vous pouvez nous signaler le lien ci-dessous ou <a class="lien" href="/index.html">retourner à la page d’accueil</a>.</p>
+      </div>
+
+      <form class="report-form report-form--404" action="https://formsubmit.app/f/yrwzty2rxq" method="POST">
+        <input type="hidden" name="_subject" value="Page introuvable — La Tortue">
+
+        <div class="report-honeypot" aria-hidden="true">
+          <label for="report-website">Ne pas remplir ce champ</label>
+          <input id="report-website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="report-fields">
+          <div class="report-field">
+            <label for="missing-url">Adresse introuvable</label>
+            <input id="missing-url" type="text" name="missing_url" readonly required>
+            <small>Détectée automatiquement.</small>
+          </div>
+
+          <div class="report-field">
+            <label for="source-url">Page de provenance</label>
+            <input id="source-url" type="text" name="source_url" placeholder="https://...">
+            <small>Facultatif, si vous avez suivi un lien.</small>
+          </div>
+
+          <div class="report-field report-field--wide">
+            <label for="report-message">Commentaire</label>
+            <textarea id="report-message" name="message" placeholder="Expliquez ce que vous cherchiez…" minlength="5" maxlength="3000" rows="3" required></textarea>
+          </div>
+
+          <div class="report-verification">
+            <div class="report-confirmation">
+              <input id="report-confirmation" type="checkbox" name="manual_confirmation" value="confirmed" required>
+              <label for="report-confirmation">Envoi manuel</label>
+            </div>
+            <button class="report-submit" type="submit">Envoyer</button>
+          </div>
+        </div>
+      </form>
+    </main>
 
     <footer class="pied">
       <div class="pied-colonnes">
@@ -40,6 +95,7 @@
             <li><a href="/confidentialite.html">Politique de confidentialité</a></li>
             <li><a href="/accessibilite.html">Déclaration d’accessibilité</a></li>
             <li><a href="/mentions-legales.html">Mentions légales</a></li>
+            <li><a href="/report.html">Signaler un problème</a></li>
           </ul>
         </nav>
         <div class="pied-col">
@@ -49,6 +105,9 @@
       </div>
       <p class="pied-copy">© 2026 La Tortue</p>
     </footer>
-  </main>
+  </div>
+  <script>
+    document.getElementById("missing-url").value = window.location.pathname + window.location.search;
+  </script>
 </body>
 </html>

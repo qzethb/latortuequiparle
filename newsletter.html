@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Newsletter — La Tortue</title>
-  <meta name="description" content="La page Newsletter de La Tortue est en cours de construction.">
+  <meta name="description" content="Inscrivez-vous à la newsletter de La Tortue pour recevoir les nouvelles publications par e-mail.">
   <link rel="stylesheet" href="charte.css">
   <script src="menu.js" defer></script>
   <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
@@ -14,7 +14,7 @@
   <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 <body>
-  <div class="page">
+  <div class="page" id="contact">
     <header>
       <a class="marque" href="index.html">
         <img class="logo" src="logo.svg" alt="La Tortue">
@@ -34,26 +34,63 @@
       <h1>Newsletter</h1>
       <div class="ornement"></div>
     </section>
-
     <main class="lecture">
       <div class="lecture-texte">
-        <p>Cette page est en cours de construction.</p>
-        <!-- Formulaire à réactiver quand la newsletter sera prête.
+        <p>Cette page est encore en cours de développement. Pour vous inscrire à la newsletter, vous pouvez utiliser le formulaire présent sur la <a href="contacts.html" class="lien">page de contacts</a>.</p>
+    <!--
+    <main class="lecture">
+      <div class="lecture-texte">
         <p>Recevez par e-mail les nouvelles publications de La Tortue. Seule votre adresse e-mail est demandée.</p>
-        <form class="inscription-newsletter" action="https://formsubmit.co/latortuequipense@yahoo.com" method="POST">
-          <input type="hidden" name="_subject" value="Nouvelle inscription">
-          <label for="newsletter-email">Votre adresse e-mail</label>
-          <input type="email" id="newsletter-email" name="email" placeholder="nom@exemple.fr" autocomplete="email" required>
-          <label class="inscription-consentement">
-            <input type="checkbox" required>
-            <span>J’accepte que mon adresse soit utilisée pour recevoir la newsletter. <a class="lien" href="confidentialite.html">Lire la politique de confidentialité</a>.</span>
-          </label>
-          <button type="submit">S’inscrire</button>
+        <p>Votre inscription sera transmise à l’adresse de contact de La Tortue par le service FormSubmit.</p>
+
+        <form
+          class="report-form report-form--newsletter"
+          action="https://formsubmit.app/f/yrwzty2rxq"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Nouvelle inscription à la newsletter — La Tortue">
+
+          <div class="report-honeypot" aria-hidden="true">
+            <label for="newsletter-website">Ne pas remplir ce champ</label>
+            <input
+              id="newsletter-website"
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="report-fields">
+            <div class="report-field">
+              <label for="newsletter-email">Adresse e-mail</label>
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                placeholder="votre@email.fr"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <div class="report-verification">
+              <div class="report-confirmation">
+                <input id="newsletter-confirmation" type="checkbox" name="manual_confirmation" value="confirmed" required>
+                <label for="newsletter-confirmation">Envoi manuel</label>
+              </div>
+              <button class="report-submit" type="submit">S’inscrire</button>
+            </div>
+          </div>
+
+          <div class="report-actions">
+            <a class="report-back" href="index.html">Retour au site</a>
+          </div>
         </form>
-        <p>Votre inscription sera envoyée par le service FormSubmit à l’adresse de contact de La Tortue.</p>
-        -->
       </div>
     </main>
+  -->
+
 
     <footer class="pied">
       <div class="pied-colonnes">
@@ -72,11 +109,12 @@
             <li><a href="confidentialite.html">Politique de confidentialité</a></li>
             <li><a href="accessibilite.html">Déclaration d’accessibilité</a></li>
             <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="report.html">Signaler un problème</a></li>
           </ul>
         </nav>
         <div class="pied-col">
           <h2>Newsletter</h2>
-          <p class="pied-note">Page en cours de construction.</p>
+          <p class="pied-note">Recevez les nouvelles publications de La Tortue par e-mail.</p>
         </div>
       </div>
       <p class="pied-copy">© 2026 La Tortue</p>

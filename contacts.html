@@ -6,6 +6,7 @@
 <title>Contact — La Tortue</title>
 <meta name="description" content="Retrouvez les informations de contact de La Tortue et l’état du service de newsletter.">
 <link rel="stylesheet" href="charte.css">
+<link rel="stylesheet" href="report.css">
 <script src="menu.js" defer></script>
 <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
@@ -55,16 +56,51 @@
 
     <div class="lecture-texte" style="margin-top: 5rem;">
         <p>
-        Pour vous abonner à notre newsletter, vous pouvez remplir le formulaire ci-dessous.</p>
+        Pour vous abonner à notre newsletter, vous pouvez remplir le formulaire ci-dessous (veillez à cocher la case « Envoi manuel »). En cliquant sur envoyer, vous acceptez que <strong>votre adressee e-mail soit utilisée pour recevoir la newsletter</strong>.</p>
     </div>
-        <ul class="contacts">
-        <li>
-        <span>Newsletter</span>
-        <a href="mailto:latortuequipense@yahoo.com">
-            Cette fonctionnalité est en cours de développement.
-        </a>
-        </li>
-    </ul>
+        <form
+          class="report-form report-form--newsletter"
+          action="https://formsubmit.app/f/yrwzty2rxq"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Nouveau signalement — La Tortue">
+
+          <div class="report-honeypot" aria-hidden="true">
+            <label for="report-website">Ne pas remplir ce champ</label>
+            <input
+              id="report-website"
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="report-fields">
+            <div class="report-field">
+              <label for="newsletter-email">Adresse e-mail</label>
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  name="email"
+                  placeholder="votre@email.fr"
+                  required
+                >
+            </div>
+
+            <div class="report-verification">
+              <div class="report-confirmation">
+                <input id="report-confirmation" type="checkbox" name="manual_confirmation" value="confirmed" required>
+                <label for="report-confirmation">Envoi manuel</label>
+              </div>
+              <button class="report-submit" type="submit">Envoyer</button>
+            </div>
+          </div>
+
+          <div class="report-actions">
+            <a class="report-back" href="index.html">Retour au site</a>
+          </div>
+        </form>
 
     </section>
     <footer class="pied">
@@ -84,6 +120,7 @@
             <li><a href="confidentialite.html">Politique de confidentialité</a></li>
             <li><a href="accessibilite.html">Déclaration d’accessibilité</a></li>
             <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="report.html">Signaler un problème</a></li>
           </ul>
         </nav>
         <div class="pied-col">
