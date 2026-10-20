@@ -15,6 +15,10 @@
   margin-bottom: 18px;
 }
 
+#contact .report-form {
+  margin-top: 8px;
+}
+
 .report-form {
   border-top: 1px solid var(--lilas, #cdbfe3);
 }
