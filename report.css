@@ -240,7 +240,7 @@
 
 .report-resolved-list li {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
   gap: 20px;
   padding: 20px 0;
