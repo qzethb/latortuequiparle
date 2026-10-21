@@ -239,11 +239,11 @@
 }
 
 .report-resolved-list li {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: baseline;
-  gap: 18px;
-  padding: 12px 0;
+  gap: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid var(--lilas, #cdbfe3);
   color: var(--texte, #2b2336);
   font-size: var(--t-petit, 15px);
@@ -251,6 +251,7 @@
 }
 
 .report-resolved-list time {
+  flex: 0 0 auto;
   color: var(--texte-doux, #7a7087);
   font-size: var(--t-micro, 13px);
   font-style: italic;
@@ -287,8 +288,8 @@
     align-items: flex-start;
     flex-direction: column;
   }
-    .report-resolved-list li {
-    grid-template-columns: 1fr;
+  .report-resolved-list li {
+    flex-direction: column;
     gap: 2px;
   }
 }
