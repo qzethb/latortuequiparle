@@ -220,7 +220,41 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
+.report-resolved {
+  margin-top: 40px;
+}
 
+.report-resolved h2 {
+  margin-bottom: 12px;
+  color: var(--violet-profond, #2e1a4a);
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.report-resolved-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--lilas, #cdbfe3);
+}
+
+.report-resolved-list li {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--lilas, #cdbfe3);
+  color: var(--texte, #2b2336);
+  font-size: var(--t-petit, 15px);
+  line-height: 1.5;
+}
+
+.report-resolved-list time {
+  color: var(--texte-doux, #7a7087);
+  font-size: var(--t-micro, 13px);
+  font-style: italic;
+}
 @media (max-width: 640px) {
   #contact .billet-entete {
     padding: 32px 0 18px;
@@ -252,6 +286,10 @@
   .report-actions {
     align-items: flex-start;
     flex-direction: column;
+  }
+    .report-resolved-list li {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 }
 
